@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>З Днем народження, кицюнчик!</title>
+  <meta name="description" content="Інтерактивне вітання українською. Фіолетово‑чорна тема, анімації, міні‑гра, галерея та секретний лист." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <nav class="container">
+      <a href="#hero" class="logo">✨</a>
+      <ul>
+        <li><a href="#wishes">Побажання</a></li>
+        <li><a href="#game">Міні‑гра</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#letter">Лист</a></li>
+      </ul>
+      <div class="actions">
+        <!-- music removed -->
+        <button id="themeBtn" class="ghost" aria-label="Перемкнути неоновий режим">⚡</button>
+      </div>
+    </nav>
+  </header>
+
+  <section id="hero" class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <h1 class="title">
+        <span class="script">З Днем народження,</span><br />
+        <span class="gradient">котя</span>!
+      </h1>
+      <p id="typed" class="typed" data-text="Натисни «Святкувати!» — і неонове свято почнеться. Тут є побажання, гра, галерея та секретний лист ❤️">
+        <!-- typewriter goes here -->
+      </p>
+      <div class="cta">
+        <button id="celebrateBtn" class="primary">🎉 Святкувати!</button>
+        <a href="#game" class="secondary">🎮 Піти в гру</a>
+      </div>
+      <!-- personalization removed -->
+    </div>
+  </section>
+
+  <section id="wishes" class="section container">
+    <h2 class="section-title">Побажання для тебе</h2>
+    <div class="cards">
+      <div class="card flip">
+        <div class="card-inner">
+          <div class="card-front">💜</div>
+          <div class="card-back">Хай у твоєму серці завжди живе тепло, а я зроблю все, щоб його вистачало.</div>
+        </div>
+      </div>
+      <div class="card flip">
+        <div class="card-inner">
+          <div class="card-front">🌟</div>
+          <div class="card-back">Бажаю тобі мріяти сміливо й ніколи не сумніватися, бо ти заслуговуєш на найкраще.</div>
+        </div>
+      </div>
+      <div class="card flip">
+        <div class="card-inner">
+          <div class="card-front">🍰</div>
+          <div class="card-back">Ти робиш мій світ красивішим — нехай і твій буде наповнений красою та любов’ю.</div>
+        </div>
+      </div>
+      <div class="card flip">
+        <div class="card-inner">
+          <div class="card-front">🚀</div>
+          <div class="card-back">Хай кожен день нагадує тобі, наскільки ти особлива для мене.</div>
+        </div>
+      </div>
+      <div class="card quote">
+        <p>«Твій сміх — мій улюблений саундтрек»</p>
+      </div>
+    </div>
+    <div class="surprise">
+      <button id="starsQuestBtn" class="secondary">⭐ Зібрати зорі-побажання</button>
+      <p id="questHint" class="hint">Збери 7 сяючих зірок на сторінці — і отримаєш секрет!</p>
+    </div>
+  </section>
+
+  <section id="game" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Міні‑гра: «Фіолетове полювання»</h2>
+      <p class="center">Рухай кільце мишею або пальцем та лови фіолетові серця. Маєш 30 секунд. Набери 30 балів — і буде феєрверк!</p>
+
+      <div class="game-wrap">
+        <canvas id="gameCanvas" width="900" height="540"></canvas>
+        <div class="hud">
+          <span>⏱ <strong id="time">30</strong> с</span>
+          <span>💎 Очки: <strong id="score">0</strong></span>
+          <button id="startGame" class="primary small">Старт</button>
+        </div>
+      </div>
+      <div id="winMessage" class="win hidden">
+        <h3>Вітаю! Ти чемпіонка 💜</h3>
+        <p>Твоя нагорода — салют, конфеті й маленький секрет у розділі «Лист» 😉</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section container">
+    <h2 class="section-title">Що за Афродіта?!</h2>
+    <p class="center">Фото підтягуються автоматично з папок <code>/photos</code>, <code>/images</code> або <code>/img</code> у корені сайту.</p>
+
+    <!-- uploader removed -->
+    <div id="galleryGrid" class="grid"></div>
+
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+      <img id="lightboxImg" alt="Перегляд фото">
+      <button id="closeLightbox" class="ghost large" aria-label="Закрити">✕</button>
+    </div>
+  </section>
+
+  <section id="letter" class="section alt">
+    <div class="container letter-wrap">
+      <h2 class="section-title">Секретний лист</h2>
+      <p class="center">Натисни, щоб відкрити. (краще після перемоги в грі 😉)</p>
+      <button id="openLetter" class="primary">💌 Відкрити лист</button>
+
+      <div id="letterModal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-card">
+          <button class="ghost close" id="closeLetter" aria-label="Закрити">✕</button>
+          <h3>Для кицюнчика</h3>
+          <div id="letterText" class="letter-text" data-text="Ти неймовірна. Дякую, що робиш світ яскравішим. Хай сьогодні все буде так, як ти хочеш. Обіцяю підтримувати, дивувати і сміятись разом. З Днем народження! PS: Ти виграла гру — отже, бажання точно здійснюються ✨ Також ти знайшла зорі, тож нехай вони завжди ведуть тебе до мрій."></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>З любов’ю зроблено спеціально для тебе 💜</p>
+      <button id="doNotPress" class="ghost small">Не натискати</button>
+    </div>
+  </footer>
+<script src="script.js"></script>
+
+<script>
+// За бажанням: можна явно вказати файли фоток, інакше автопошук в /images, /photos, /img
+// window.GALLERY_IMAGES = ['images/img1.JPG', 'images/img2.jpg', 'images/img3.jpg'];
+</script>
+</body>
+</html>
